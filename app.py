@@ -1,16 +1,17 @@
-from flask import Flask, render_template
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from route.route import main as index_routes
+
 
 app = Flask(__name__, static_url_path='')
-
-
-@app.route('/')
-def hello_world():
-    return render_template('index.html')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./db/test.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 
 
 
-
+app.register_blueprint(index_routes)
+# app.register_blueprint(topic_routes, url_prefix='/topic')
 
 
 if __name__ == '__main__':
