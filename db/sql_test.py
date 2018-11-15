@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine, MetaData
-from sqlalchemy import Table, Column, Integer, String, ForeignKey
+from sqlalchemy import Table, Column, Integer, String, ForeignKey, select
+import time
 # import pymysql
 # pymysql.install_as_MySQLdb()
 
@@ -15,7 +16,8 @@ conn = engine.connect()
 # engine = create_engine('mysql+mysqldb://root:zz168601ZZ@localhost/test', echo=True)
 # metadata = MetaData(engine)
 
-def initDB():
+
+def init_data():
         user_table = Table('user', metadata,
                            Column('id', Integer, primary_key=True),
                            Column('time', String(50)),
@@ -30,21 +32,28 @@ def initDB():
 
         metadata.create_all()
 
-def queryDB():
+
+def query_data():
         user_table = Table('user', metadata, autoload=True)
         print('user' in metadata.tables)
-        print([c.name for c in user_table.columns])
+        print([c.time for c in user_table.columns])
 
         address_table = Table('address', metadata, autoload=True)
         print('address' in metadata.tables)
 
 
-def insertData(user_table,  conn):
+def insert_data(conn, ip):
+        user_table = Table('user', metadata, autoload=True)
         ins = user_table.insert()
-        conn.execute(ins, name='adam', fullname='Adam Gu')
+        localtime = time.asctime(time.localtime(time.time()))
+        conn.execute(ins, time=localtime, ip=ip)
 
 
-
-
-
+if __name__ == '__main__':
+    init_data()
+    query_data()
+    # insert_data(conn, '129.9.0.1')
+    # insert_data(conn, '165.9.0.1')
+    # insert_data(conn, '123.9.0.1')
+    # query_data()
 
