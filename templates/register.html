@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap Multi Step Registration Form Template</title>
+        <title>注册</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -49,19 +49,19 @@
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<span class="li-text">
-								Put some text or
-							</span> 
-							<a href="#"><strong>links</strong></a> 
-							<span class="li-text">
-								here, or some icons: 
-							</span> 
-							<span class="li-social">
-								<a href="#"><i class="fa fa-facebook"></i></a> 
-								<a href="#"><i class="fa fa-twitter"></i></a> 
-								<a href="#"><i class="fa fa-envelope"></i></a> 
-								<a href="#"><i class="fa fa-skype"></i></a>
-							</span>
+							<!--<span class="li-text">-->
+								<!--Put some text or-->
+							<!--</span> -->
+							<!--<a href="#"><strong>links</strong></a> -->
+							<!--<span class="li-text">-->
+								<!--here, or some icons: -->
+							<!--</span> -->
+							<!--<span class="li-social">-->
+								<!--<a href="#"><i class="fa fa-facebook"></i></a> -->
+								<!--<a href="#"><i class="fa fa-twitter"></i></a> -->
+								<!--<a href="#"><i class="fa fa-envelope"></i></a> -->
+								<!--<a href="#"><i class="fa fa-skype"></i></a>-->
+							<!--</span>-->
 						</li>
 					</ul>
 				</div>
@@ -70,29 +70,29 @@
 
         <!-- Top content -->
         <div class="top-content">
-        	
+
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Bootstrap</strong> Multi Step Registration Form</h1>
+                            <h1><strong>Bootstrap</strong> 注册</h1>
                             <div class="description">
                             	<p>
-	                            	This is a free responsive multi-step registration form made with Bootstrap. 
-	                            	Download it on <a href="#"><strong>AZMIND</strong></a>, customize and use it as you like!
+	                            	This is a free responsive multi-step registration form made with Bootstrap.
+	                            	<!--Download it on <a href="#"><strong>AZMIND</strong></a>, customize and use it as you like!-->
                             	</p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	
-                        	<form role="form" action="" method="post" class="registration-form">
-                        		
+
+                        	<form role="form" action="{{ url_for('.login')}}" method="POST" class="registration-form" >
+
                         		<fieldset>
 		                        	<div class="form-top">
 		                        		<div class="form-top-left">
-		                        			<h3>Step 1 / 3</h3>
+		                        			<h3>Step 1 / 2</h3>
 		                            		<p>Tell us who you are:</p>
 		                        		</div>
 		                        		<div class="form-top-right">
@@ -100,27 +100,29 @@
 		                        		</div>
 		                            </div>
 		                            <div class="form-bottom">
+                                        <!-- 用户名 -->
 				                    	<div class="form-group">
-				                    		<label class="sr-only" for="form-first-name">First name</label>
-				                        	<input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+				                    		<label class="sr-only" for="form-first-name">用户名</label>
+				                        	<input type="text" name="form-first-name" placeholder="用户名" class="form-first-name form-control" id="form-first-name">
 				                        </div>
+                                        <!-- 邮箱 -->
 				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-last-name">Last name</label>
-				                        	<input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+				                        	<label class="sr-only" for="form-last-name">邮箱</label>
+				                        	<input type="text" name="form-last-name" placeholder="邮箱" class="form-last-name form-control" id="form-last-name">
 				                        </div>
-				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-about-yourself">About yourself</label>
-				                        	<textarea name="form-about-yourself" placeholder="About yourself..." 
-				                        				class="form-about-yourself form-control" id="form-about-yourself"></textarea>
-				                        </div>
+				                        <!--<div class="form-group" >-->
+				                        	<!--<label class="sr-only" for="form-about-yourself">About yourself</label>-->
+				                        	<!--<textarea name="form-about-yourself" placeholder="About yourself..." -->
+				                        				<!--class="form-about-yourself form-control" id="form-about-yourself"></textarea>-->
+				                        <!--</div>-->
 				                        <button type="button" class="btn btn-next">Next</button>
 				                    </div>
 			                    </fieldset>
-			                    
+
 			                    <fieldset>
 		                        	<div class="form-top">
 		                        		<div class="form-top-left">
-		                        			<h3>Step 2 / 3</h3>
+		                        			<h3>Step 2 / 2</h3>
 		                            		<p>Set up your account:</p>
 		                        		</div>
 		                        		<div class="form-top-right">
@@ -134,18 +136,18 @@
 				                        </div>
 				                        <div class="form-group">
 				                    		<label class="sr-only" for="form-password">Password</label>
-				                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+				                        	<input type="password" name="form-password" placeholder="密码" class="form-password form-control" id="form-password">
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-repeat-password">Repeat password</label>
-				                        	<input type="password" name="form-repeat-password" placeholder="Repeat password..." 
+				                        	<input type="password" name="form-repeat-password" placeholder="重复密码"
 				                        				class="form-repeat-password form-control" id="form-repeat-password">
 				                        </div>
-				                        <button type="button" class="btn btn-previous">Previous</button>
-				                        <button type="button" class="btn btn-next">Next</button>
+				                        <button type="button" class="btn btn-previous">上一步</button>
+				                        <button type="submit" class="btn">注册</button>
 				                    </div>
 			                    </fieldset>
-			                    
+
 			                    <fieldset>
 		                        	<div class="form-top">
 		                        		<div class="form-top-left">
@@ -173,16 +175,20 @@
 				                        <button type="submit" class="btn">Sign me up!</button>
 				                    </div>
 			                    </fieldset>
-		                    
+
 		                    </form>
-		                    
+
                         </div>
                     </div>
                 </div>
             </div>
-            
-        </div>
-More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+
+            </div>
+
+            <div class="bot-content">
+                注册 <a href="http://www.yezixigua3.com/" target="_blank" title="智能家居">智能家居</a> - Collect from <a href="http://www.yezixigua3.com/" title="yezixigua" target="_blank">yezixigua</a>
+            </div>
+
 
         <!-- Javascript -->
         <script src="js/jquery-1.11.1.min.js"></script>
@@ -190,7 +196,7 @@ More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板�
         <script src="js/jquery.backstretch.min.js"></script>
         <script src="js/retina-1.1.0.min.js"></script>
         <script src="js/scripts.js"></script>
-        
+
         <!--[if lt IE 10]>
             <script src="js/placeholder.js"></script>
         <![endif]-->

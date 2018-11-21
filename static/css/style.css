@@ -28,7 +28,7 @@ body {
   background:none repeat scroll 0 0 #fff;
   font-size: 15px;
   font-family: 'Raleway-Regular';
-  color:#312f30;
+  color:#172a3c;
   line-height: 28px;
 }
 
@@ -39,12 +39,13 @@ h3,
 h4,
 h5,
 h6 {
-  color:#1d191a;
+  color:#1a3866;
   font-weight:normal;
   margin:0 0 6px 0;
   font-family: 'Raleway-Bold';
   text-transform:capitalize;
 }
+
 h1 {
   font-size:2.5em;
   text-transform:uppercase;
@@ -73,6 +74,31 @@ h5 {
 h6 {
   font-size:1.6em;
   line-height: 1.4em;
+}
+
+hb {
+  font-size:5em;
+  text-transform:uppercase;
+  line-height: 1.2em;
+  color:#172a3c;
+}
+hb1 {
+  font-size:1.4em;
+  text-transform:uppercase;
+  line-height: 1.2em;
+  color:#172a3c;
+}
+hr1 {
+  font-size:5em;
+  text-transform:uppercase;
+  line-height: 1.2em;
+  color:#170505;
+}
+hr2 {
+  font-size:1.4em;
+  text-transform:uppercase;
+  line-height: 1.2em;
+  color:#170505;
 }
 
 h1 a,
@@ -673,7 +699,7 @@ a.tab-label:hover,a.tab-label.active-btn {
 /* logo */
 .logo img {
   margin-top:0px;
-  width:256px;
+  width:99px;
 }
 
 /* ------------------------------- */

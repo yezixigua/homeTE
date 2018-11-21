@@ -9,7 +9,9 @@ from flask import (
     send_from_directory,
 )
 
-main = Blueprint('index', __name__)
+# main = Blueprint('index', __name__)
+# 需要查一下原本的参数index是什么意思
+main = Blueprint('', __name__)
 
 
 @main.route("/")
@@ -18,8 +20,14 @@ def index():
     return render_template('index.html')
 
 
-@main.route("/login")
+@main.route("/login", methods=['POST', 'GET'])
 def login():
+    print(request.remote_addr)
+    return render_template('login.html')
+
+
+@main.route("/register")
+def register():
     print(request.remote_addr)
     return render_template('register.html')
 
