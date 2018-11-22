@@ -15,16 +15,94 @@ class Visitor(Base):
     ip = Column('ip', String(50))
 
 
-# 暂时这样放着吧，还没啥用
-class Role(Base):
-    __tablename__ = 'Role'
+# 用户&密码数据库
+class User(Base):
+    __tablename__ = 'User'
     id = Column('id', Integer, primary_key=True, autoincrement=True)
     name = Column('name', String(50))
+    password = Column('password', String(50))
+    email = Column('email', String(20))
+    phone = Column('phone', String(20))
+    createdTime = Column('createdTime', String(50))
+    lastVisitTime = Column('lastVisitTime', String(50))
+    isDeleted = Column('isDeleted', String(10))
+
+    def __init__(self, name='', pwd='', email='', phone=''):
+        self.name = name
+        self.password = pwd
+        ct = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        self.email = email
+        self.phone = phone
+        self.createdTime = ct
+        self.lastVisitTime = ct
+        self.isDeleted = 'False'
+
+    @staticmethod
+    def init_data():
+        Base.metadata.create_all(engine)
+
+    def add(self):
+        session1 = DB_Session()
+        session1.add(self)
+        session1.commit()
+        session1.close()
+
+    def __repr__(self):
+        string = '' \
+                 'id: {} user: {} pwd: {} ct: {} lvt: {} d: {}' \
+                 ''.format(
+            self.id,
+            self.name,
+            self.password,
+            self.createdTime,
+            self.lastVisitTime,
+            self.isDeleted
+        )
+        return string
+
+    @classmethod
+    def query_data(cls, **kwargs):
+        # 5. 查询数据
+        # 5.1 返回结果集的第二项
+        for k, v in kwargs.items():
+            key, value = k, v
+        print(key, value)
+        # user = session.query(cls).get(key)
+        user = session.query(cls).filter_by(id=1).all()
+        print(user)
+
+    @classmethod
+    def query_by_name(cls, name):
+        # 5. 查询数据
+        # 5.1 返回结果集的第二项
+        # user = session.query(cls).get(key)
+        user = session.query(cls).filter_by(name=name).all()
+        print(user)
+        return user
+
+    @classmethod
+    def is_valid_user(cls, name, pwd):
+        user = cls.query_by_name(name)[0]
+        if user.password == pwd:
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def query_all():
+        # 5. 查询数据
+        users = session.query(User)[:]
+        for user in users:
+            print(user)
+
+
 
 
 # 连接数据库的一些变量， 会需要全局引用
 # print(os.getcwd())
-DB_CONNECT_STRING = 'sqlite:///db/test3.db'
+DB_CONNECT_STRING = 'sqlite:///db/test2.db'
+if __name__ == '__main__':
+    DB_CONNECT_STRING = 'sqlite:///test2.db'
 engine = create_engine(DB_CONNECT_STRING, echo=False)
 DB_Session = sessionmaker(bind=engine)
 session = DB_Session()
@@ -44,6 +122,15 @@ def add_data(data_ip):
     session1.commit()
     session1.close()
 
+
+def add_data_user():
+    # 2. 插入数据
+    session1 = DB_Session()
+    ct = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    u = User(name='1', password='34', createdTime=ct, lastVisitTime=ct, isDeleted='False')
+    session1.add(u)
+    session1.commit()
+    session1.close()
 
 
 def add_data_demo():
@@ -79,18 +166,19 @@ def delete_data(id_data):
     session.query(Role).filter(Role.id == id_data).delete()
 
 
-def query_data(id):
+def query_data(id, database=User):
     # 5. 查询数据
     # 5.1 返回结果集的第二项
-    user = session.query(Visitor).get(id)
-    print(user.id, user.time, user.ip)
+    # user = session.query(database).filter_by(id=1)
+    user = session.query(database).filter(database.id == id).all()
+    print(user)
 
 
-def query_all():
+def query_all(database=User):
     # 5. 查询数据
-    users = session.query(Visitor)[:]
+    users = session.query(database)[:]
     for user in users:
-        print(user.id, user.time, user.ip)
+        print(user)
 
 #
 # # 5.3 查询条件
@@ -140,14 +228,14 @@ def query_all():
 # user = session.query(User).order_by(random()).first()
 
 
-def test():
+def my_test():
     init_data()
-    query_all()
-    add_data('1.1.1.1')
-    query_all()
+    a = User(name='an', pwd='a', email='1', phone='1')
+    a.add()
+    a.query_all()
 
 
 if __name__ == '__main__':
-    test()
+    my_test()
     session.close()
 

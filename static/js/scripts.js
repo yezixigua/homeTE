@@ -59,24 +59,25 @@ jQuery(document).ready(function() {
     	});
     });
 
-//    // submit
-//    // 在输入为空的时候改为输入错误class
-//    $('.registration-form').on('submit', function(e) {
-//        log('已点击')
-//    	$(this).find('input[type="text"], input[type="password"]').each(function() {
-//    		if( $(this).val() == "" ) {
-//    			e.preventDefault();
-//    			$(this).addClass('input-error');
-//    			log('输入错误')
-//    		}
-//    		else {
-//    			$(this).removeClass('input-error');
-//    			log('输入正确')
-//
-//    		}
-//    	});
-//
-//    });
+    // submit
+    // 在输入为空的时候改为输入错误class
+    $('.registration-form').on('submit', function(e) {
+        log('已点击')
+        $
+    	$(this).find('input[type="text"], input[type="password"]').each(function() {
+    		if( $(this).val() == "" ) {
+    			e.preventDefault();
+    			$(this).addClass('input-error');
+    			log('输入错误')
+    		}
+    		else {
+    			$(this).removeClass('input-error');
+    			log('输入正确')
+
+    		}
+    	});
+
+    });
 
 
 });
