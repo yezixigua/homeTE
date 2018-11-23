@@ -91,10 +91,22 @@ def table():
     return render_template('table.html')
 
 
+@main.route("/table_panel")
+def table_panel():
+    print(request.remote_addr)
+    return render_template('tab-panel.html')
+
+
 @main.route("/form")
 def form():
     print(request.remote_addr)
     return render_template('form.html')
+
+
+@main.route("/empty")
+def empty():
+    print(request.remote_addr)
+    return render_template('empty.html')
 
 
 @main.route("/contact")
