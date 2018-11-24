@@ -64,11 +64,13 @@ class User(Base):
     def query_data(cls, **kwargs):
         # 5. 查询数据
         # 5.1 返回结果集的第二项
+        session1 = DB_Session()
         for k, v in kwargs.items():
             key, value = k, v
         print(key, value)
-        # user = session.query(cls).get(key)
-        user = session.query(cls).filter_by(id=1).all()
+        # user = session1.query(cls).get(key)
+        user = session1.query(cls).filter_by(id=1).all()
+        session1.close()
         print(user)
 
     @classmethod
@@ -76,8 +78,10 @@ class User(Base):
         # 5. 查询数据
         # 5.1 返回结果集的第二项
         # user = session.query(cls).get(key)
-        user = session.query(cls).filter_by(name=name).all()
+        session1 = DB_Session()
+        user = session1.query(cls).filter_by(name=name).all()
         print(user)
+        session1.close()
         return user
 
     @classmethod
@@ -93,10 +97,11 @@ class User(Base):
     @staticmethod
     def query_all():
         # 5. 查询数据
-        users = session.query(User)[:]
+        session1 = DB_Session()
+        users = session1.query(User)[:]
         for user in users:
             print(user)
-
+        session1.close()
 
 
 
