@@ -82,10 +82,10 @@ class User(Base):
 
     @classmethod
     def is_valid_user(cls, name, pwd):
-        if len(cls.query_by_name(name)) == 0:
+        user = cls.query_by_name(name)
+        if len(user) == 0:
             return False
-        user = cls.query_by_name(name)[0]
-        if user.password == pwd:
+        if user[0].password == pwd:
             return True
         else:
             return False
