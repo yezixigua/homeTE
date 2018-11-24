@@ -82,6 +82,8 @@ class User(Base):
 
     @classmethod
     def is_valid_user(cls, name, pwd):
+        if len(cls.query_by_name(name)) == 0:
+            return False
         user = cls.query_by_name(name)[0]
         if user.password == pwd:
             return True
@@ -230,9 +232,9 @@ def query_all(database=User):
 
 def my_test():
     init_data()
-    a = User(name='an', pwd='a', email='1', phone='1')
-    a.add()
-    a.query_all()
+    User.query_all()
+    User.is_valid_user('12234', '123')
+
 
 
 if __name__ == '__main__':

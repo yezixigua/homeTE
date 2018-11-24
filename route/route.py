@@ -36,9 +36,11 @@ def login():
         password = request.form.get('password')
         valid_user = User.is_valid_user(name, password)
         if valid_user:
+            print('成功登录:', name)
             return render_template('controler.html')
         else:
-            return '错误登录'
+            print('登录失败:', name)
+            return render_template('login.html', message='密码错误 或 无该账户')
         # return render_template(url_for('.index'))
 
 

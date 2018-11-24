@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from route.route import main as index_routes
 
 
-app = Flask(__name__, static_url_path='', static_path='')
+app = Flask(__name__, static_url_path='')
 
 app.register_blueprint(index_routes)
 # app.register_blueprint(topic_routes, url_prefix='/topic')
